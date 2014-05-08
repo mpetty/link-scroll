@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8' />
+	<title>Content Modal</title>
+
+	<link rel='stylesheet' type='text/css' media='all' href='demo.css' />
+
+	<script type='text/javascript' src='../jquery-1.10.2.js'></script>
+	<script type='text/javascript' src='../jquery.okSmoothScroll.js'></script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			$('a').okSmoothScroll();
+		});
+	</script>
+</head>
+
+<body>
+	<div class="inside">
+
+		<div id="scroll-target1">
+			<p><a href="#scroll-target2">Scroll to the bottom</a></p>
+		</div>
+
+		<div style="height:3000px"><!-- spacer --></div>
+
+		<div id="scroll-target2">
+			<p><a href="#scroll-target1">Scroll to the top</a></p>
+		</div>
+
+	</div>
+</body>
+</html>
