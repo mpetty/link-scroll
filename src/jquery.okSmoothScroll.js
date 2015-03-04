@@ -1,83 +1,47 @@
-/**
+/*!
  *	Ok Smooth Scroll
  *
- *	@author 	Mitchell Petty
- * 	@version 	1.0.1
+ *	@author 	Mitchell Petty <https://github.com/mpetty/ok-smoothscroll>
+ * 	@version 	1.0.2
  */
 (function($){
 "use strict";
 
-	// Object constructor
-	var OkSmoothScroll = function(selector, settings) {
+	// Smooth Scroll
+	var OkSmoothScroll = {
+		init : function(selector, settings) {
+			$(selector).data('okSmoothScroll', settings);
+			$(selector).off('.okSmoothScroll').on('click.okSmoothScroll', $.proxy(this.scroll,this));
+			return this;
+		},
 
-		// Set properties
-		this.selector = $(selector);
-		this.settings = settings;
+		scroll : function(e) {
+			var $this = $(e.target),
+				$target = $($this.prop('hash')),
+				settings = $this.data('okSmoothScroll'),
+				offset = 0;
 
-		// Initialize
-		this.initialize.call(this);
+			if( location.pathname.replace(/^\//,"") === $this.prop('pathname').replace(/^\//,"") && location.hostname === $this.prop('hostname') ) {
+				e.preventDefault();
 
-	};
-
-	// Initialize
-	OkSmoothScroll.prototype.initialize = function() {
-
-		// Add event listeners
-		this.selector.off('.okSmoothScroll').on('click.okSmoothScroll', $.proxy(this.events,this));
-
-	};
-
-	// Events
-	OkSmoothScroll.prototype.events = function(e) {
-
-		// Define vars
-		var $this = $(e.target);
-		var $target = $( $this.prop('hash') );
-		var offset = 0;
-
-		// Continue only if internal link
-		if( location.pathname.replace(/^\//,"") == $this.prop('pathname').replace(/^\//,"") && location.hostname == $this.prop('hostname') ) {
-
-			// prevent default
-			e.preventDefault();
-
-			// Update vars
-			$target = $target.length && $target || $("[name="+ $this.prop('hash').slice(1) +"]");
-
-			// Continue if target.length
-			if( $target.length ) {
-
-				// Set offset
-				offset = $target.offset().top;
-
-				// Animate to position
-				$("html,body").animate({scrollTop: offset  + this.settings.scroll_offset}, this.settings.scroll_speed);
-
+				if( $target.length ) {
+					offset = $target.offset().top;
+					$("html,body").animate({scrollTop: offset  + settings.scroll_offset}, settings.scroll_speed);
+				}
 			}
-
 		}
-
 	};
 
 	// Plugin Init
 	$.fn.okSmoothScroll = function(options) {
-		if ( typeof options === 'object' || typeof options === 'undefined' ) {
-
-			// Initialize
-			return this.each(function() {
-
-				// Set settings
+		return this.each(function() {
+			if( typeof options === 'object' || typeof options === 'undefined' ) {
 				var settings = $.extend(true, {}, $.fn.okSmoothScroll.defaults, options);
+				OkSmoothScroll.init(this, settings);
+			}
 
-				// Create object
-				var okScroll = new OkSmoothScroll(this, settings);
-
-				// return for chaining
-				return this;
-
-			});
-
-		}
+			return this;
+		});
 	};
 
 	// Plugin defaults
