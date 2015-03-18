@@ -6,17 +6,17 @@ module.exports = function(grunt) {
 		concat: {
 			dist: {
 				src: [
-					'src/jquery.okSmoothScroll.js'
+					'src/jquery.linkScroll.js'
 				],
-				dest: 'jquery.okSmoothScroll.min.js',
+				dest: 'jquery.linkScroll.min.js',
 			}
 		},
 
 		uglify: {
 			dist: {
 				files: {
-					'jquery.okSmoothScroll.min.js' : [
-						'jquery.okSmoothScroll.min.js'
+					'jquery.linkScroll.min.js' : [
+						'jquery.linkScroll.min.js'
 					]
 				}
 			}

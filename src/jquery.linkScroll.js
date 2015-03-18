@@ -1,24 +1,24 @@
 /*!
- *	Ok Smooth Scroll
+ *	Link Scroll
  *
- *	@author 	Mitchell Petty <https://github.com/mpetty/ok-smoothscroll>
- * 	@version 	1.0.2
+ *	@author 	Mitchell Petty <https://github.com/mpetty/link-scroll>
+ * 	@version 	1.0.3
  */
 (function($){
 "use strict";
 
 	// Smooth Scroll
-	var OkSmoothScroll = {
+	var LinkScroll = {
 		init : function(selector, settings) {
-			$(selector).data('okSmoothScroll', settings);
-			$(selector).off('.okSmoothScroll').on('click.okSmoothScroll', $.proxy(this.scroll,this));
-			return this;
+			$(selector).data('linkScroll', settings);
+			$(selector).off('.linkScroll').on('click.linkScroll', $.proxy(this.scroll,this));
+			return selector;
 		},
 
 		scroll : function(e) {
 			var $this = $(e.target),
 				$target = $($this.prop('hash')),
-				settings = $this.data('okSmoothScroll'),
+				settings = $this.data('linkScroll'),
 				offset = 0;
 
 			if( location.pathname.replace(/^\//,"") === $this.prop('pathname').replace(/^\//,"") && location.hostname === $this.prop('hostname') ) {
@@ -33,19 +33,15 @@
 	};
 
 	// Plugin Init
-	$.fn.okSmoothScroll = function(options) {
+	$.fn.linkScroll = function(options) {
 		return this.each(function() {
-			if( typeof options === 'object' || typeof options === 'undefined' ) {
-				var settings = $.extend(true, {}, $.fn.okSmoothScroll.defaults, options);
-				OkSmoothScroll.init(this, settings);
-			}
-
-			return this;
+			var settings = $.extend(true, {}, $.fn.linkScroll.defaults, options);
+			return LinkScroll.init(this, settings);
 		});
 	};
 
 	// Plugin defaults
-	$.fn.okSmoothScroll.defaults = {
+	$.fn.linkScroll.defaults = {
 		scroll_offset 		:	0,		// Offset the scroll. Used to position the scroll above or below the target
 		scroll_speed 		: 	300		// Scroll Animation Speed
 	};

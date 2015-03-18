@@ -1,8 +1,12 @@
 {
-	"name": "Ok Smooth Scroll",
-	"version": "1.0.2",
+	"name": "linkScroll",
+
+	"version": "1.0.3",
+
 	"license": "MIT",
+
 	"private": true,
+
 	"ignore": [
 		"**/.*",
 		"node_modules",
@@ -13,9 +17,11 @@
 		"Gruntfile.js",
 		"readme.md"
 	],
+
   	"main": [
-  		"jquery.okSmoothScroll.min.js"
+  		"jquery.linkScroll.min.js"
   	],
+
 	"dependencies": {
 		"jquery": ">=1.7.0"
 	}

@@ -1,10 +1,13 @@
 {
-  "name": "ok-smoothscroll",
-  "version": "1.0.2",
+  "name": "linkScroll",
+
+  "version": "1.0.3",
+
   "repository": {
     "type": "git",
-    "url": "git@github.com:mpetty/ok-smoothscroll.git"
+    "url": "git@github.com:mpetty/link-scroll.git"
   },
+
   "devDependencies": {
     "grunt": ">=0.4.1",
     "grunt-contrib-concat": ">=0.3.0",

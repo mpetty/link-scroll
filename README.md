@@ -1,4 +1,4 @@
-# OkSmoothscroll v1.0.2
+# Link Scroll v1.0.3
 
 Library for animating to an internal link.
 
@@ -12,7 +12,7 @@ Add to your project's `bower.json` file, like:
   "version": "1.0.0",
   "dependencies": {
     "jquery": "1.11.0",
-    "fillselect": "git@github.com:mpetty/ok-smoothscroll"
+    "fillselect": "git@github.com:mpetty/link-scroll"
   }
 }
 ```
@@ -20,7 +20,7 @@ Add to your project's `bower.json` file, like:
 ## Usage
 
 ```javascript
-$('a').okSmoothScroll(options);
+$('a').linkScroll(options);
 ```
 
 ## Options available
